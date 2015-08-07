@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "SWRevealViewController.h"
+#import "MapTableViewController.h"
 
 @interface MenuViewController ()
 
@@ -27,6 +28,22 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    // Set the title of navigation bar by using the menu items
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
+    destViewController.title = [[self.menuItems objectAtIndex:indexPath.row] capitalizedString];
+    
+//  Uncomment to add segue for other view controllers
+//    if ([segue.identifier isEqualToString:@"showPhoto"]) {
+//        UINavigationController *navController = segue.destinationViewController;
+//        PhotoViewController *photoController = [navController childViewControllers].firstObject;
+//        NSString *photoFilename = [NSString stringWithFormat:@"%@_photo", [menuItems objectAtIndex:indexPath.row]];
+//        photoController.photoFilename = photoFilename;
+//    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -28,7 +28,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZc-f6-Udp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="251"/>
+            <point key="canvasLocation" x="1116" y="251"/>
         </scene>
         <!--Map Table View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -163,6 +163,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="nIC-3D-Vpy" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="7hb-8D-1gA"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="saved" textLabel="ec0-Gk-VE2" style="IBUITableViewCellStyleDefault" id="692-V1-Qd6">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -211,4 +214,7 @@
     <resources>
         <image name="reveal-icon.png" width="22" height="17"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7hb-8D-1gA"/>
+    </inferredMetricsTieBreakers>
 </document>
