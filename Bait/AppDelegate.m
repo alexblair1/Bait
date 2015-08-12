@@ -5,6 +5,8 @@
 //  Created by Stephen Blair on 8/4/15.
 //  Copyright (c) 2015 Stephen Blair. All rights reserved.
 //
+#import <Parse/Parse.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
 
 #import "AppDelegate.h"
 
@@ -17,6 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [ParseCrashReporting enable];
+    [Parse setApplicationId:@"5vylZ2mqPLiYkjlqULtgeapjL6uoVVIpg1XNirkj"
+                  clientKey:@"YiD7g8yGAMnILehVdiPGXIK6eMmgncVWXnG0um9E"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+        
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     NSLog(@"%d",  status);
     

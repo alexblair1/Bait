@@ -8,6 +8,10 @@
 
 #import "MapTableViewCell.h"
 
+@interface MapTableViewCell ()
+
+@end
+
 @implementation MapTableViewCell
 
 - (void)awakeFromNib {
