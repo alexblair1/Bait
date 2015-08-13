@@ -53,12 +53,6 @@
                                     </mask>
                                 </variation>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVu-A3-ddI">
-                                <rect key="frame" x="524" y="350" width="47" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-w0-H7S">
                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -106,7 +100,6 @@
                     <connections>
                         <outlet property="mapView" destination="KRG-T1-AmG" id="eu6-XD-P4W"/>
                         <outlet property="revealButtonItem" destination="bqH-Y0-ErW" id="cdf-xI-fv6"/>
-                        <outlet property="subtitle2" destination="hVu-A3-ddI" id="Ru6-BE-BXu"/>
                         <outlet property="tableView" destination="W8L-w0-H7S" id="XI0-FJ-HoE"/>
                     </connections>
                 </viewController>
