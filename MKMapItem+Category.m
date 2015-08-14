@@ -8,6 +8,17 @@
 
 #import "MKMapItem+Category.h"
 
+static char distanceStringKey;
+
 @implementation MKMapItem (Category)
+@dynamic distanceString;
+
+-(void)setDistanceString:(NSString *)distanceString{
+    objc_setAssociatedObject(self, &distanceStringKey, distanceString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(NSString *)distanceString{
+    return objc_getAssociatedObject(self, &distanceStringKey);
+}
 
 @end

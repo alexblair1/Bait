@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.5.0"
+  },
+  "applications": {
+    "Bait": {
+      "applicationId": "5vylZ2mqPLiYkjlqULtgeapjL6uoVVIpg1XNirkj",
+      "masterKey": "IQKz7C4g2FHf76UDvEdOkCOAdQSHt6iRIS70UIlG"
+    },
+    "_default": {
+      "link": "Bait"
+    }
+  }
+}

@@ -7,7 +7,10 @@
 //
 
 #import <MapKit/MapKit.h>
+#import <objc/runtime.h>
 
 @interface MKMapItem (Category)
+@property (nonatomic, retain) NSString *distanceString;
 
 @end
+

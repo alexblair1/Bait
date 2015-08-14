@@ -8,13 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import <CoreData/CoreData.h>
 
-@interface DataSource : NSObject
+#import "AppDelegate.h"
+#import "MapTableViewController.h"
+
+
+@interface DataSource : NSObject <NSFetchedResultsControllerDelegate>
 
 +(instancetype) sharedInstance;
 
 @property (nonatomic, strong) CLLocationManager *locationManagerDS;
 @property (nonatomic, strong) NSArray *mapItems;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSMutableArray *fetchResultItems;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext; 
 
 -(void)localSearchRequestWithText:(NSString *)text withRegion:(MKCoordinateRegion)region completion:(void (^)(void))completionBlock;
+-(void)saveSelectedRegionWithName:(NSString *)name withDistance:(NSString *)distance withY:(float)yCoordinate withX:(float)xCoordinate;
+-(void)fetchRequest;
+
 @end

@@ -48,5 +48,45 @@
     }];
 }
 
+-(void)saveSelectedRegionWithName:(NSString *)name withDistance:(NSString *)distance withY:(float)yCoordinate withX:(float)xCoordinate{
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Region" inManagedObjectContext:context];
+    NSManagedObject *newRegion = [[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context];
+    
+    [newRegion setValue:name forKey:@"name"];
+    [newRegion setValue:[NSNumber numberWithFloat:yCoordinate] forKey:@"yCoordinate"];
+    [newRegion setValue:[NSNumber numberWithFloat:xCoordinate] forKey:@"xCoordinate"];
+    [newRegion setValue:distance forKey:@"distance"];
+    
+    NSError *error = nil;
+    
+    if (![newRegion.managedObjectContext save:&error]) {
+        NSLog(@"unable to save managed context");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+}
+
+-(void)fetchRequest{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Region"];
+    [request setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:@"name" cacheName:nil];
+    
+    NSError *error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    
+    if (error) {
+        NSLog(@"unable to perform fetch");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    
+    self.fetchResultItems = [NSMutableArray arrayWithArray:[self.fetchedResultsController fetchedObjects]];
+    NSLog(@"fetch result items: %@", self.fetchResultItems);
+}
 
 @end
