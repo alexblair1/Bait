@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.menuItems = @[@"header", @"map", @"saved"];
+    self.menuItems = @[@"header", @"map", @"saved", @"honeyHole"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

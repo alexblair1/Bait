@@ -1,36 +1,64 @@
 //
-//  SavedPoiTableViewController.m
+//  HoneyHoleTableViewController.m
 //  Bait
 //
-//  Created by Stephen Blair on 8/11/15.
+//  Created by Stephen Blair on 8/15/15.
 //  Copyright (c) 2015 Stephen Blair. All rights reserved.
 //
 
-#import "SavedPoiTableViewController.h"
+#import "HoneyHoleTableViewController.h"
 
-@interface SavedPoiTableViewController ()
+@interface HoneyHoleTableViewController ()
 
-@property (nonatomic, strong) NSMutableArray *testArray;
+@property (nonatomic, strong) HoneyHole *honeyHoleObject;
 
 @end
 
-@implementation SavedPoiTableViewController
+@implementation HoneyHoleTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fetchRequest];
+    [self initializeRevealView];
     [self initializeNavigationImage];
-    [self initializeRevealVC];
+    [self initializeLocationManager];
+    [self fetchRequest];
     
-    // Uncomment the following line to preserve selection between presentations.
-     self.clearsSelectionOnViewWillAppear = NO;
+    self.searchBar.delegate = self;
+}
+
+#pragma mark - Init Methods
+
+-(void) initializeRevealView{
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.revealButtonItem setTarget: self.revealViewController];
+        [self.revealButtonItem setAction: @selector(revealToggle:)];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+}
+
+-(void) initializeNavigationImage{
+    UIImage *fishHookImage = [UIImage imageNamed:@"baitText.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:fishHookImage];
+    self.navigationItem.titleView = imageView;
+}
+
+-(void) initializeLocationManager{
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager setDelegate:self];
+    
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    
+    [self.locationManager startUpdatingLocation];
 }
 
 -(void)fetchRequest{
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Region"];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"HoneyHole"];
     [request setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:@"name" cacheName:nil];
@@ -48,20 +76,20 @@
     NSLog(@"fetch result items: %@", self.fetchResultItems);
 }
 
--(void) initializeNavigationImage{
-    UIImage *fishHookImage = [UIImage imageNamed:@"baitText.png"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:fishHookImage];
-    self.navigationItem.titleView = imageView;
-}
+#pragma mark - Search Bar
 
--(void) initializeRevealVC{
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
-        [self.sidebarButton setTarget: self.revealViewController];
-        [self.sidebarButton setAction: @selector(revealToggle:)];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    
+    CLLocationCoordinate2D startCoord;
+    startCoord.latitude = self.locationManager.location.coordinate.latitude;
+    startCoord.longitude = self.locationManager.location.coordinate.longitude;
+    
+    NSString *textFromSearchBar = self.searchBar.text;
+    
+    [[DataSource sharedInstance] saveHoneyHoleWithName:textFromSearchBar withY:startCoord.latitude withX:startCoord.longitude];
+    self.searchBar.text = nil;
+    [self.tableView reloadData];
+    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - Fetched results controller delegate
@@ -111,12 +139,19 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
     //Fetch Record
-    NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [cell.textLabel setText:[record valueForKey:@"name"]];
-    [cell.detailTextLabel setText:[record valueForKey:@"address"]];
+    self.honeyHoleObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSString *nameString = [NSString stringWithFormat:@"%@", self.honeyHoleObject.name];
+    float x = [self.honeyHoleObject.xCoordinate floatValue];
+    float y = [self.honeyHoleObject.yCoordinate floatValue];
+    
+    cell.textLabel.text = nameString;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"X:%f   Y:%f", y, x];
+    
+//    NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//    [cell.textLabel setText:[record valueForKey:@"name"]];
+//    [cell.detailTextLabel setText:[record valueForKey:@"xCoordinate"]];
     
 }
-
 
 #pragma mark - Table view data source
 
@@ -138,10 +173,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"regionCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"honeyHoleCell" forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"regionCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"honeyHoleCell"];
     }
     
     cell.imageView.image = [UIImage imageNamed:@"fishHook.png"];
@@ -151,7 +186,7 @@
     return cell;
 }
 
-#pragma mark - Table view editing 
+#pragma mark - Table view editing
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
@@ -167,9 +202,22 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.honeyHoleObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    float x = [self.honeyHoleObject.xCoordinate floatValue];
+    float y = [self.honeyHoleObject.yCoordinate floatValue];
+    
+    CLLocationCoordinate2D endingCoordinate = CLLocationCoordinate2DMake(y, x);
+    MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:endingCoordinate addressDictionary:nil];
+    MKMapItem *endingMapItem = [[MKMapItem alloc] initWithPlacemark:endLocation];
+    endingMapItem.name = self.honeyHoleObject.name;
+    
+    NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
+    [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+    
+    [endingMapItem openInMapsWithLaunchOptions:launchOptions];
+    
 }
 
 /*
@@ -177,18 +225,6 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
 }
 */
 
@@ -215,5 +251,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

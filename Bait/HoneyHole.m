@@ -1,18 +1,17 @@
 //
-//  Region.m
+//  HoneyHole.m
 //  Bait
 //
-//  Created by Stephen Blair on 8/13/15.
+//  Created by Stephen Blair on 8/15/15.
 //  Copyright (c) 2015 Stephen Blair. All rights reserved.
 //
 
-#import "Region.h"
+#import "HoneyHole.h"
 
 
-@implementation Region
+@implementation HoneyHole
 
 @dynamic name;
-@dynamic distance;
 @dynamic xCoordinate;
 @dynamic yCoordinate;
 

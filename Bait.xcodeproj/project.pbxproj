@@ -25,10 +25,13 @@
 		AD3F9E9F1B75312B009FD776 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F9E9E1B75312B009FD776 /* MenuViewController.m */; };
 		AD3F9EA61B754912009FD776 /* app-map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AD3F9EA51B754912009FD776 /* app-map-icon.png */; };
 		AD9375F71B7D42DA0079775F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9375F61B7D42DA0079775F /* CoreData.framework */; };
-		AD9375FE1B7D69C70079775F /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9375FD1B7D69C70079775F /* Region.m */; };
-		AD9375FF1B7D69C70079775F /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9375FD1B7D69C70079775F /* Region.m */; };
 		AD9376031B7D76D10079775F /* BaitTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD9376011B7D76D10079775F /* BaitTestModel.xcdatamodeld */; };
 		AD9376041B7D76D10079775F /* BaitTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD9376011B7D76D10079775F /* BaitTestModel.xcdatamodeld */; };
+		AD93760C1B7E8B300079775F /* TableViewNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD93760B1B7E8B300079775F /* TableViewNavigationController.m */; };
+		AD93760D1B7E8B300079775F /* TableViewNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD93760B1B7E8B300079775F /* TableViewNavigationController.m */; };
+		ADD14C751B7FE9A000D0C186 /* HoneyHoleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD14C741B7FE9A000D0C186 /* HoneyHoleTableViewController.m */; };
+		ADD14C7B1B7FEDC600D0C186 /* HoneyHoleNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD14C7A1B7FEDC600D0C186 /* HoneyHoleNavigationController.m */; };
+		ADD14C7E1B8018B100D0C186 /* HoneyHole.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD14C7D1B8018B100D0C186 /* HoneyHole.m */; };
 		ADD666F41B7951D400C7B48B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD666F31B7951D400C7B48B /* Parse.framework */; };
 		ADD666F61B7951E800C7B48B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD666F51B7951E800C7B48B /* Bolts.framework */; };
 		ADD666F81B7951F500C7B48B /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD666F71B7951F500C7B48B /* ParseCrashReporting.framework */; };
@@ -88,9 +91,15 @@
 		AD3F9E9E1B75312B009FD776 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		AD3F9EA51B754912009FD776 /* app-map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-map-icon.png"; sourceTree = "<group>"; };
 		AD9375F61B7D42DA0079775F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		AD9375FC1B7D69C70079775F /* Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Region.h; sourceTree = "<group>"; };
-		AD9375FD1B7D69C70079775F /* Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Region.m; sourceTree = "<group>"; };
 		AD9376021B7D76D10079775F /* BaitTestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BaitTestModel.xcdatamodel; sourceTree = "<group>"; };
+		AD93760A1B7E8B300079775F /* TableViewNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewNavigationController.h; sourceTree = "<group>"; };
+		AD93760B1B7E8B300079775F /* TableViewNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewNavigationController.m; sourceTree = "<group>"; };
+		ADD14C731B7FE9A000D0C186 /* HoneyHoleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoneyHoleTableViewController.h; sourceTree = "<group>"; };
+		ADD14C741B7FE9A000D0C186 /* HoneyHoleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoneyHoleTableViewController.m; sourceTree = "<group>"; };
+		ADD14C791B7FEDC600D0C186 /* HoneyHoleNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoneyHoleNavigationController.h; sourceTree = "<group>"; };
+		ADD14C7A1B7FEDC600D0C186 /* HoneyHoleNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoneyHoleNavigationController.m; sourceTree = "<group>"; };
+		ADD14C7C1B8018B100D0C186 /* HoneyHole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoneyHole.h; sourceTree = "<group>"; };
+		ADD14C7D1B8018B100D0C186 /* HoneyHole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoneyHole.m; sourceTree = "<group>"; };
 		ADD666F31B7951D400C7B48B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		ADD666F51B7951E800C7B48B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		ADD666F71B7951F500C7B48B /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -170,30 +179,19 @@
 		AD0ED96B1B715136005BBC98 /* Bait */ = {
 			isa = PBXGroup;
 			children = (
-				AD9376011B7D76D10079775F /* BaitTestModel.xcdatamodeld */,
-				AD3F9E941B752DB4009FD776 /* SWRevealViewController */,
 				AD0ED9701B715136005BBC98 /* AppDelegate.h */,
 				AD0ED9711B715136005BBC98 /* AppDelegate.m */,
-				AD0ED99C1B715B5A005BBC98 /* DataSource.h */,
-				AD0ED99D1B715B5A005BBC98 /* DataSource.m */,
-				AD0ED9951B715A16005BBC98 /* MapTableViewController.h */,
-				AD0ED9961B715A16005BBC98 /* MapTableViewController.m */,
-				AD0ED99F1B71938A005BBC98 /* MapTableViewCell.h */,
-				AD0ED9A01B71938A005BBC98 /* MapTableViewCell.m */,
-				AD3F9E9D1B75312B009FD776 /* MenuViewController.h */,
-				AD3F9E9E1B75312B009FD776 /* MenuViewController.m */,
-				ADD6671F1B7BE23100C7B48B /* MKMapItem+Category.h */,
-				ADD667201B7BE23100C7B48B /* MKMapItem+Category.m */,
-				AD0ED9A21B72ABD5005BBC98 /* NavigationController.h */,
-				AD0ED9A31B72ABD5005BBC98 /* NavigationController.m */,
-				ADD667161B7ABABA00C7B48B /* SavedPoiTableViewController.h */,
-				ADD667171B7ABABA00C7B48B /* SavedPoiTableViewController.m */,
+				AD93760E1B7E925D0079775F /* NavigationControllers */,
+				AD9376091B7E89900079775F /* ManagedObjects */,
+				AD9376081B7E89650079775F /* CustomCells */,
+				AD9376071B7E89250079775F /* Categories */,
+				AD9376061B7E88650079775F /* ViewControllers */,
+				AD3F9E941B752DB4009FD776 /* SWRevealViewController */,
+				AD9376051B7E88300079775F /* DataSource  */,
 				AD0ED9791B715136005BBC98 /* Main.storyboard */,
 				AD0ED97C1B715136005BBC98 /* Images.xcassets */,
 				AD0ED97E1B715136005BBC98 /* LaunchScreen.xib */,
 				AD0ED96C1B715136005BBC98 /* Supporting Files */,
-				AD9375FC1B7D69C70079775F /* Region.h */,
-				AD9375FD1B7D69C70079775F /* Region.m */,
 			);
 			path = Bait;
 			sourceTree = "<group>";
@@ -234,6 +232,71 @@
 				AD3F9E971B752E47009FD776 /* SWRevealViewController.m */,
 			);
 			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		AD9376051B7E88300079775F /* DataSource  */ = {
+			isa = PBXGroup;
+			children = (
+				AD0ED99C1B715B5A005BBC98 /* DataSource.h */,
+				AD0ED99D1B715B5A005BBC98 /* DataSource.m */,
+				AD9376011B7D76D10079775F /* BaitTestModel.xcdatamodeld */,
+			);
+			name = "DataSource ";
+			sourceTree = "<group>";
+		};
+		AD9376061B7E88650079775F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD0ED9951B715A16005BBC98 /* MapTableViewController.h */,
+				AD0ED9961B715A16005BBC98 /* MapTableViewController.m */,
+				AD3F9E9D1B75312B009FD776 /* MenuViewController.h */,
+				AD3F9E9E1B75312B009FD776 /* MenuViewController.m */,
+				ADD667161B7ABABA00C7B48B /* SavedPoiTableViewController.h */,
+				ADD667171B7ABABA00C7B48B /* SavedPoiTableViewController.m */,
+				ADD14C731B7FE9A000D0C186 /* HoneyHoleTableViewController.h */,
+				ADD14C741B7FE9A000D0C186 /* HoneyHoleTableViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AD9376071B7E89250079775F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				ADD6671F1B7BE23100C7B48B /* MKMapItem+Category.h */,
+				ADD667201B7BE23100C7B48B /* MKMapItem+Category.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		AD9376081B7E89650079775F /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				AD0ED99F1B71938A005BBC98 /* MapTableViewCell.h */,
+				AD0ED9A01B71938A005BBC98 /* MapTableViewCell.m */,
+			);
+			name = CustomCells;
+			sourceTree = "<group>";
+		};
+		AD9376091B7E89900079775F /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				ADD14C7C1B8018B100D0C186 /* HoneyHole.h */,
+				ADD14C7D1B8018B100D0C186 /* HoneyHole.m */,
+			);
+			name = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		AD93760E1B7E925D0079775F /* NavigationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD0ED9A21B72ABD5005BBC98 /* NavigationController.h */,
+				AD0ED9A31B72ABD5005BBC98 /* NavigationController.m */,
+				AD93760A1B7E8B300079775F /* TableViewNavigationController.h */,
+				AD93760B1B7E8B300079775F /* TableViewNavigationController.m */,
+				ADD14C791B7FEDC600D0C186 /* HoneyHoleNavigationController.h */,
+				ADD14C7A1B7FEDC600D0C186 /* HoneyHoleNavigationController.m */,
+			);
+			name = NavigationControllers;
 			sourceTree = "<group>";
 		};
 		ADD667121B7A88A200C7B48B /* frameworks */ = {
@@ -385,14 +448,17 @@
 				AD0ED9A11B71938A005BBC98 /* MapTableViewCell.m in Sources */,
 				ADD667181B7ABABB00C7B48B /* SavedPoiTableViewController.m in Sources */,
 				AD3F9E9F1B75312B009FD776 /* MenuViewController.m in Sources */,
+				ADD14C7E1B8018B100D0C186 /* HoneyHole.m in Sources */,
 				AD9376031B7D76D10079775F /* BaitTestModel.xcdatamodeld in Sources */,
 				AD0ED9971B715A16005BBC98 /* MapTableViewController.m in Sources */,
+				ADD14C751B7FE9A000D0C186 /* HoneyHoleTableViewController.m in Sources */,
+				AD93760C1B7E8B300079775F /* TableViewNavigationController.m in Sources */,
 				AD0ED99E1B715B5A005BBC98 /* DataSource.m in Sources */,
 				ADD667211B7BE23100C7B48B /* MKMapItem+Category.m in Sources */,
 				AD3F9E981B752E47009FD776 /* SWRevealViewController.m in Sources */,
+				ADD14C7B1B7FEDC600D0C186 /* HoneyHoleNavigationController.m in Sources */,
 				AD0ED9721B715136005BBC98 /* AppDelegate.m in Sources */,
 				AD0ED96F1B715136005BBC98 /* main.m in Sources */,
-				AD9375FE1B7D69C70079775F /* Region.m in Sources */,
 				AD0ED9A41B72ABD5005BBC98 /* NavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD9376041B7D76D10079775F /* BaitTestModel.xcdatamodeld in Sources */,
-				AD9375FF1B7D69C70079775F /* Region.m in Sources */,
+				AD93760D1B7E8B300079775F /* TableViewNavigationController.m in Sources */,
 				AD0ED98C1B715136005BBC98 /* BaitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

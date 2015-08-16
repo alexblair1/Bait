@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext; 
 
 -(void)localSearchRequestWithText:(NSString *)text withRegion:(MKCoordinateRegion)region completion:(void (^)(void))completionBlock;
--(void)saveSelectedRegionWithName:(NSString *)name withDistance:(NSString *)distance withY:(float)yCoordinate withX:(float)xCoordinate;
--(void)fetchRequest;
+-(void)saveSelectedRegionWithName:(NSString *)name withDistance:(NSString *)distance withY:(float)yCoordinate withX:(float)xCoordinate withAddress:(NSString *)address;
+-(void)saveHoneyHoleWithName:(NSString *)name withY:(float)yCoordinate withX:(float)xCoordinate;
 
 @end

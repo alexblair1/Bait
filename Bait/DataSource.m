@@ -28,6 +28,8 @@
     return self;
 }
 
+#pragma mark - Data handling for MapTableViewController/SavedPoiTableViewController
+
 -(void)localSearchRequestWithText:(NSString *)text withRegion:(MKCoordinateRegion)region completion:(void (^)(void))completionBlock{
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = text;
@@ -48,7 +50,7 @@
     }];
 }
 
--(void)saveSelectedRegionWithName:(NSString *)name withDistance:(NSString *)distance withY:(float)yCoordinate withX:(float)xCoordinate{
+-(void)saveSelectedRegionWithName:(NSString *)name withDistance:(NSString *)distance withY:(float)yCoordinate withX:(float)xCoordinate withAddress:(NSString *)address{
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -60,6 +62,7 @@
     [newRegion setValue:[NSNumber numberWithFloat:yCoordinate] forKey:@"yCoordinate"];
     [newRegion setValue:[NSNumber numberWithFloat:xCoordinate] forKey:@"xCoordinate"];
     [newRegion setValue:distance forKey:@"distance"];
+    [newRegion setValue:address forKey:@"address"];
     
     NSError *error = nil;
     
@@ -69,24 +72,25 @@
     }
 }
 
--(void)fetchRequest{
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+#pragma mark - Data Handling for HoneyHoleTableViewController 
+
+-(void)saveHoneyHoleWithName:(NSString *)name withY:(float)yCoordinate withX:(float)xCoordinate{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Region"];
-    [request setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:@"name" cacheName:nil];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"HoneyHole" inManagedObjectContext:context];
+    NSManagedObject *newRegion = [[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context];
+    
+    [newRegion setValue:name forKey:@"name"];
+    [newRegion setValue:[NSNumber numberWithFloat:yCoordinate] forKey:@"yCoordinate"];
+    [newRegion setValue:[NSNumber numberWithFloat:xCoordinate] forKey:@"xCoordinate"];
     
     NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
     
-    if (error) {
-        NSLog(@"unable to perform fetch");
+    if (![newRegion.managedObjectContext save:&error]) {
+        NSLog(@"unable to save managed context");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
-    
-    self.fetchResultItems = [NSMutableArray arrayWithArray:[self.fetchedResultsController fetchedObjects]];
-    NSLog(@"fetch result items: %@", self.fetchResultItems);
 }
 
 @end

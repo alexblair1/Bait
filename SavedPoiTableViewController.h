@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreData/CoreData.h>
 
-@interface SavedPoiTableViewController : UITableViewController
+#import "SWRevealViewController.h"
+#import "DataSource.h"
+#import "AppDelegate.h"
+
+@interface SavedPoiTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSMutableArray *fetchResultItems;
 
 @end

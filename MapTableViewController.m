@@ -28,12 +28,12 @@
 - (void)viewDidLoad {
     //TODO: map view is not loading with correct region. Region needs to be set to 30-40 miles.
     [super viewDidLoad];
-    [self initializeMapView];
-    [self performSelectorOnMainThread:@selector(initializeMapView) withObject:nil waitUntilDone:NO];
+//    [self initializeMapView];
     [self initializeLocationManager];
     [self initializeNavigationImage];
     [self initializeTableView];
     [self initializeRevealView];
+    [self performSelectorOnMainThread:@selector(initializeMapView) withObject:nil waitUntilDone:NO];
     
 //    uncomment for parse error test
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -88,6 +88,7 @@
     
     [self.mapView setRegion:region animated:YES];
     [self.mapView regionThatFits:region];
+
 }
 
 -(void) initializeNavigationImage{
@@ -115,7 +116,7 @@
     
     [self.mapView removeAnnotations:self.mapView.annotations];
     
-    NSString *searchString = NSLocalizedString(@"fishing supplies", "local search text");
+    NSString *searchString = NSLocalizedString(@"fishing supply", "local search text");
     
     [[DataSource sharedInstance] localSearchRequestWithText:searchString withRegion:self.mapView.region completion:^{
         for (MKMapItem *items in [DataSource sharedInstance].mapItems){
@@ -216,7 +217,7 @@
     float y = item.placemark.location.coordinate.latitude;
     float x = item.placemark.location.coordinate.longitude;
     
-    [[DataSource sharedInstance] saveSelectedRegionWithName:item.name withDistance:item.distanceString withY:y withX:x];
+    [[DataSource sharedInstance] saveSelectedRegionWithName:item.name withDistance:item.distanceString withY:y withX:x withAddress:item.placemark.addressDictionary[@"Street"]];
     
     NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
     [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
