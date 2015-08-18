@@ -90,6 +90,19 @@
     self.searchBar.text = nil;
     [self.tableView reloadData];
     [self.searchBar resignFirstResponder];
+    [self.searchBar setShowsCancelButton:NO animated:YES];
+    [self.tableView reloadData];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [self.searchBar setShowsCancelButton:YES animated:YES];
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [self.searchBar resignFirstResponder];
+    [self.searchBar setShowsCancelButton:NO animated:YES];
+    self.searchBar.text = nil;
 }
 
 #pragma mark - Fetched results controller delegate
@@ -147,10 +160,6 @@
     cell.textLabel.text = nameString;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"X:%f   Y:%f", y, x];
     
-//    NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//    [cell.textLabel setText:[record valueForKey:@"name"]];
-//    [cell.detailTextLabel setText:[record valueForKey:@"xCoordinate"]];
-    
 }
 
 #pragma mark - Table view data source
@@ -205,6 +214,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.honeyHoleObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
+    NSString *alertTitle = [NSString stringWithFormat:@"Would you like to route to: %@", self.honeyHoleObject.name];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:nil delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     float x = [self.honeyHoleObject.xCoordinate floatValue];
     float y = [self.honeyHoleObject.yCoordinate floatValue];
     
@@ -216,8 +232,9 @@
     NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
     [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
     
-    [endingMapItem openInMapsWithLaunchOptions:launchOptions];
-    
+    if (buttonIndex == 1) {
+        [endingMapItem openInMapsWithLaunchOptions:launchOptions];
+    }
 }
 
 /*

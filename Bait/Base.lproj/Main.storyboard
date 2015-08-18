@@ -57,7 +57,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kt-5C-U53" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160" y="-845"/>
+            <point key="canvasLocation" x="1160" y="-1501"/>
+        </scene>
+        <!--Gear View Controller-->
+        <scene sceneID="V3p-NF-qF7">
+            <objects>
+                <viewController id="QIh-Fs-udP" customClass="GearViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fsK-eP-Z5R"/>
+                        <viewControllerLayoutGuide type="bottom" id="44o-nI-oLD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BgC-tj-ofF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cUj-II-Eik">
+                        <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" id="bUc-Wg-k2P">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="revealButtonItem" destination="bUc-Wg-k2P" id="4XF-LF-ftf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MIm-1w-hKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1160" y="-811"/>
         </scene>
         <!--Saved Poi Table View Controller-->
         <scene sceneID="FqA-9b-lW2">
@@ -199,9 +225,10 @@
                     </view>
                     <connections>
                         <segue destination="0ud-a4-XZy" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="le8-t7-gDs"/>
-                        <segue destination="nIC-3D-Vpy" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="iFY-2o-rH8"/>
-                        <segue destination="MlL-BV-acB" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="eyj-7q-6QI"/>
+                        <segue destination="nIC-3D-Vpy" kind="custom" identifier="" customClass="SWRevealViewControllerSegueSetController" id="iFY-2o-rH8"/>
+                        <segue destination="MlL-BV-acB" kind="custom" identifier="" customClass="SWRevealViewControllerSegueSetController" id="eyj-7q-6QI"/>
                         <segue destination="Je8-vu-4Go" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="TFc-uK-DhK"/>
+                        <segue destination="uDA-wj-1iS" kind="custom" identifier="" customClass="SWRevealViewControllerSegueSetController" id="GjP-Ti-vUF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5J2-GG-kI9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -216,6 +243,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" textLabel="zrK-oR-4oa" style="IBUITableViewCellStyleDefault" id="ps4-4a-Mio">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -225,61 +253,90 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BAIT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zrK-oR-4oa">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                            <color key="textColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="map" textLabel="xtH-6W-tqo" style="IBUITableViewCellStyleDefault" id="pqc-hV-kps">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pqc-hV-kps" id="ZJk-Uk-NdW">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="tackle shops near you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xtH-6W-tqo">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                            <color key="textColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="nIC-3D-Vpy" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="7hb-8D-1gA"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="saved" textLabel="ec0-Gk-VE2" style="IBUITableViewCellStyleDefault" id="692-V1-Qd6">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="692-V1-Qd6" id="AF1-L4-1Uj">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="visited tackle shops" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ec0-Gk-VE2">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                            <color key="textColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="MlL-BV-acB" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="YIq-Dg-oAq"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="honeyHole" textLabel="CPe-0t-8qX" style="IBUITableViewCellStyleDefault" id="BwH-0h-azA">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="honeyHole2" textLabel="CPe-0t-8qX" imageView="lun-Rq-qLa" style="IBUITableViewCellStyleDefault" id="BwH-0h-azA">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BwH-0h-azA" id="g0T-De-6CF">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="honey holes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CPe-0t-8qX">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Honey Holes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CPe-0t-8qX">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                            <color key="textColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="honeyComb.png" id="lun-Rq-qLa">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Je8-vu-4Go" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="HH4-q6-RV3"/>
+                                    <segue destination="Je8-vu-4Go" kind="custom" identifier="honeyHole" customClass="SWRevealViewControllerSeguePushController" id="fqN-gY-3X4"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gear" textLabel="zMC-IO-1Zl" imageView="5Is-oV-RL3" style="IBUITableViewCellStyleDefault" id="6ao-D4-jbR">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6ao-D4-jbR" id="csk-8R-WZ0">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Gear List" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zMC-IO-1Zl">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                            <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="gear.png" id="5Is-oV-RL3">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="uDA-wj-1iS" kind="custom" identifier="gear" customClass="SWRevealViewControllerSeguePushController" id="hB7-nD-ASw"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="map" textLabel="xtH-6W-tqo" imageView="beM-Gc-oDG" style="IBUITableViewCellStyleDefault" id="pqc-hV-kps">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pqc-hV-kps" id="ZJk-Uk-NdW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tackle Shops" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xtH-6W-tqo">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                            <color key="textColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="map.png" id="beM-Gc-oDG">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="nIC-3D-Vpy" kind="custom" identifier="shopsNearBy" customClass="SWRevealViewControllerSeguePushController" id="7hb-8D-1gA"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="saved" textLabel="ec0-Gk-VE2" imageView="nN4-zu-mHp" style="IBUITableViewCellStyleDefault" id="692-V1-Qd6">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="692-V1-Qd6" id="AF1-L4-1Uj">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Visited Tackle Shops" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ec0-Gk-VE2">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                            <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="visited.png" id="nN4-zu-mHp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="MlL-BV-acB" kind="custom" identifier="visited" customClass="SWRevealViewControllerSeguePushController" id="YIq-Dg-oAq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -345,15 +402,38 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znd-oi-9uu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="450" y="-845"/>
+            <point key="canvasLocation" x="450" y="-1501"/>
+        </scene>
+        <!--Gear Navigation Controller-->
+        <scene sceneID="Bs6-dD-9ht">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uDA-wj-1iS" customClass="GearNavigationController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhX-7t-xaW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QIh-Fs-udP" kind="relationship" relationship="rootViewController" id="acf-MC-0pU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="52M-3T-fhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="450" y="-811"/>
         </scene>
     </scenes>
     <resources>
+        <image name="gear.png" width="512" height="512"/>
+        <image name="honeyComb.png" width="416" height="416"/>
+        <image name="map.png" width="512" height="512"/>
         <image name="reveal-icon.png" width="22" height="17"/>
+        <image name="visited.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YIq-Dg-oAq"/>
-        <segue reference="HH4-q6-RV3"/>
+        <segue reference="fqN-gY-3X4"/>
         <segue reference="7hb-8D-1gA"/>
+        <segue reference="hB7-nD-ASw"/>
     </inferredMetricsTieBreakers>
 </document>

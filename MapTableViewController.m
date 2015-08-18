@@ -19,6 +19,8 @@
 @property (nonatomic) CLLocationDistance distance;
 @property (nonatomic) MKCoordinateRegion regionSearch;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) MKMapItem *itemForRouteAndAlertView;
+@property (nonatomic, strong) NSArray *mapItems;
 
 
 @end
@@ -28,19 +30,16 @@
 - (void)viewDidLoad {
     //TODO: map view is not loading with correct region. Region needs to be set to 30-40 miles.
     [super viewDidLoad];
-//    [self initializeMapView];
-    [self initializeLocationManager];
+    [self performSelectorOnMainThread:@selector(initializeMapViewAndLocationManager) withObject:nil waitUntilDone:NO];
     [self initializeNavigationImage];
     [self initializeTableView];
     [self initializeRevealView];
-    [self performSelectorOnMainThread:@selector(initializeMapView) withObject:nil waitUntilDone:NO];
-    
+
 //    uncomment for parse error test
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [NSException raise:NSGenericException format:@"Everything is ok. This is just a test crash."];
 //    });
 }
-
 
 #pragma mark - Initialization methods
 
@@ -59,36 +58,27 @@
     }
 }
 
--(void) initializeLocationManager{
+-(void) initializeMapViewAndLocationManager{
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager setDelegate:self];
+    [self.locationManager startUpdatingLocation];
     
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
     
-    [self.locationManager startUpdatingLocation];
-}
-
--(void) initializeMapView{
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
-    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
 
-//    self.mapView.delegate = self;
-//    self.mapView.showsUserLocation = YES;
-//    [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
-//    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
-//    [self.mapView setZoomEnabled:YES];
-//    
+    [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    [self.mapView setZoomEnabled:YES];
+    
     CLLocationCoordinate2D startCoord;
     startCoord.latitude = self.locationManager.location.coordinate.latitude;
     startCoord.longitude = self.locationManager.location.coordinate.longitude;
     
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(startCoord, 50000, 50000);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(startCoord, 70000, 70000);
     
     [self.mapView setRegion:region animated:YES];
-    [self.mapView regionThatFits:region];
-
 }
 
 -(void) initializeNavigationImage{
@@ -111,14 +101,13 @@
 }
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-
-    //TODO:Keep location manager from updating every second. Only update if user moves x meters.
+//-(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
+//    [self.mapView removeAnnotations:self.mapView.annotations];
     
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    
-    NSString *searchString = NSLocalizedString(@"fishing supply", "local search text");
+    NSString *searchString = NSLocalizedString(@"fishing", "local search text");
     
     [[DataSource sharedInstance] localSearchRequestWithText:searchString withRegion:self.mapView.region completion:^{
+        
         for (MKMapItem *items in [DataSource sharedInstance].mapItems){
             self.pointAnnotation = [[MKPointAnnotation alloc] init];
             self.pointAnnotation.coordinate = items.placemark.coordinate;
@@ -135,21 +124,19 @@
             NSLog(@"TEST FROM MONKEY PATCH: %@", items.distanceString);
             
             self.storedMapItemsForTableView = [NSMutableArray arrayWithArray:[DataSource sharedInstance].mapItems];
-
         }
-    
+        
         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"distanceString" ascending:YES];
         [self.storedMapItemsForTableView sortUsingDescriptors:[NSArray arrayWithObject:sort]];
         NSLog(@"!!!!!!!!!: %@", self.storedMapItemsForTableView);
         
         [self.tableView reloadData];
-        [self.locationManager stopUpdatingLocation];
-
+        
     }];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    [self.locationManager stopUpdatingLocation];
+    [self.locationManager startUpdatingLocation];
 }
 
 #pragma mark - Annotations
@@ -213,16 +200,30 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    MKMapItem *item = self.storedMapItemsForTableView [indexPath.row];
-    float y = item.placemark.location.coordinate.latitude;
-    float x = item.placemark.location.coordinate.longitude;
+    self.itemForRouteAndAlertView = self.storedMapItemsForTableView [indexPath.row];
     
-    [[DataSource sharedInstance] saveSelectedRegionWithName:item.name withDistance:item.distanceString withY:y withX:x withAddress:item.placemark.addressDictionary[@"Street"]];
+    NSString *title = [NSString stringWithFormat:@"Would you like to route to: %@", self.itemForRouteAndAlertView.name];
     
-    NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
-    [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     
-    [item openInMapsWithLaunchOptions:launchOptions];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [alertView show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    float y = self.itemForRouteAndAlertView.placemark.location.coordinate.latitude;
+    float x = self.itemForRouteAndAlertView.placemark.location.coordinate.longitude;
+    
+    if (buttonIndex == 1)
+    {
+        [[DataSource sharedInstance] saveSelectedRegionWithName:self.itemForRouteAndAlertView.name withDistance:self.itemForRouteAndAlertView.distanceString withY:y withX:x withAddress:self.itemForRouteAndAlertView.placemark.addressDictionary[@"Street"]];
+        
+        NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
+        [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+        [self.itemForRouteAndAlertView openInMapsWithLaunchOptions:launchOptions];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

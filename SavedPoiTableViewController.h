@@ -13,6 +13,7 @@
 #import "SWRevealViewController.h"
 #import "DataSource.h"
 #import "AppDelegate.h"
+#import "HoneyHole.h"
 
 @interface SavedPoiTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;

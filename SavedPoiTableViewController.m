@@ -11,6 +11,7 @@
 @interface SavedPoiTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *testArray;
+@property (nonatomic, strong) HoneyHole *honeyHoleObject;
 
 @end
 
@@ -164,6 +165,31 @@
         if (record) {
             [self.fetchedResultsController.managedObjectContext deleteObject:record];
         }
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.honeyHoleObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSString *alertTitle = [NSString stringWithFormat:@"Would you like to route to: %@", self.honeyHoleObject.name];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:nil delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    float x = [self.honeyHoleObject.xCoordinate floatValue];
+    float y = [self.honeyHoleObject.yCoordinate floatValue];
+    
+    CLLocationCoordinate2D endingCoordinate = CLLocationCoordinate2DMake(y, x);
+    MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:endingCoordinate addressDictionary:nil];
+    MKMapItem *endingMapItem = [[MKMapItem alloc] initWithPlacemark:endLocation];
+    endingMapItem.name = self.honeyHoleObject.name;
+    
+    NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
+    [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+    
+    if (buttonIndex == 1) {
+        [endingMapItem openInMapsWithLaunchOptions:launchOptions];
     }
 }
 

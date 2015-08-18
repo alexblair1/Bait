@@ -49,6 +49,12 @@
 		ADD667101B7952EE00C7B48B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD6670F1B7952EE00C7B48B /* Social.framework */; };
 		ADD667181B7ABABB00C7B48B /* SavedPoiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD667171B7ABABA00C7B48B /* SavedPoiTableViewController.m */; };
 		ADD667211B7BE23100C7B48B /* MKMapItem+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD667201B7BE23100C7B48B /* MKMapItem+Category.m */; };
+		ADD8DA831B82926000B30F56 /* GearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD8DA821B82926000B30F56 /* GearViewController.m */; };
+		ADD8DA861B829D2800B30F56 /* GearNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD8DA851B829D2800B30F56 /* GearNavigationController.m */; };
+		ADD8DA8C1B82F01D00B30F56 /* honeyComb.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8DA8B1B82F01D00B30F56 /* honeyComb.png */; };
+		ADD8DA8E1B82F06400B30F56 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8DA8D1B82F06400B30F56 /* gear.png */; };
+		ADD8DA901B82F0F300B30F56 /* visited.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8DA8F1B82F0F300B30F56 /* visited.png */; };
+		ADD8DA921B82F2D600B30F56 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8DA911B82F2D600B30F56 /* map.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +125,14 @@
 		ADD667171B7ABABA00C7B48B /* SavedPoiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedPoiTableViewController.m; path = ../SavedPoiTableViewController.m; sourceTree = "<group>"; };
 		ADD6671F1B7BE23100C7B48B /* MKMapItem+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapItem+Category.h"; path = "../MKMapItem+Category.h"; sourceTree = "<group>"; };
 		ADD667201B7BE23100C7B48B /* MKMapItem+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapItem+Category.m"; path = "../MKMapItem+Category.m"; sourceTree = "<group>"; };
+		ADD8DA811B82926000B30F56 /* GearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GearViewController.h; sourceTree = "<group>"; };
+		ADD8DA821B82926000B30F56 /* GearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GearViewController.m; sourceTree = "<group>"; };
+		ADD8DA841B829D2800B30F56 /* GearNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GearNavigationController.h; sourceTree = "<group>"; };
+		ADD8DA851B829D2800B30F56 /* GearNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GearNavigationController.m; sourceTree = "<group>"; };
+		ADD8DA8B1B82F01D00B30F56 /* honeyComb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = honeyComb.png; sourceTree = "<group>"; };
+		ADD8DA8D1B82F06400B30F56 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		ADD8DA8F1B82F0F300B30F56 /* visited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visited.png; sourceTree = "<group>"; };
+		ADD8DA911B82F2D600B30F56 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +215,10 @@
 			children = (
 				AD3F9E991B753075009FD776 /* reveal-icon@2x.png */,
 				AD3F9E9B1B75307C009FD776 /* reveal-icon.png */,
+				ADD8DA8B1B82F01D00B30F56 /* honeyComb.png */,
+				ADD8DA911B82F2D600B30F56 /* map.png */,
+				ADD8DA8D1B82F06400B30F56 /* gear.png */,
+				ADD8DA8F1B82F0F300B30F56 /* visited.png */,
 				AD3F9EA51B754912009FD776 /* app-map-icon.png */,
 				AD0ED96D1B715136005BBC98 /* Info.plist */,
 				AD0ED96E1B715136005BBC98 /* main.m */,
@@ -255,6 +273,8 @@
 				ADD667171B7ABABA00C7B48B /* SavedPoiTableViewController.m */,
 				ADD14C731B7FE9A000D0C186 /* HoneyHoleTableViewController.h */,
 				ADD14C741B7FE9A000D0C186 /* HoneyHoleTableViewController.m */,
+				ADD8DA811B82926000B30F56 /* GearViewController.h */,
+				ADD8DA821B82926000B30F56 /* GearViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -295,6 +315,8 @@
 				AD93760B1B7E8B300079775F /* TableViewNavigationController.m */,
 				ADD14C791B7FEDC600D0C186 /* HoneyHoleNavigationController.h */,
 				ADD14C7A1B7FEDC600D0C186 /* HoneyHoleNavigationController.m */,
+				ADD8DA841B829D2800B30F56 /* GearNavigationController.h */,
+				ADD8DA851B829D2800B30F56 /* GearNavigationController.m */,
 			);
 			name = NavigationControllers;
 			sourceTree = "<group>";
@@ -407,7 +429,11 @@
 			files = (
 				AD3F9E9A1B753075009FD776 /* reveal-icon@2x.png in Resources */,
 				AD0ED97B1B715136005BBC98 /* Main.storyboard in Resources */,
+				ADD8DA8E1B82F06400B30F56 /* gear.png in Resources */,
 				AD0ED9801B715136005BBC98 /* LaunchScreen.xib in Resources */,
+				ADD8DA921B82F2D600B30F56 /* map.png in Resources */,
+				ADD8DA8C1B82F01D00B30F56 /* honeyComb.png in Resources */,
+				ADD8DA901B82F0F300B30F56 /* visited.png in Resources */,
 				AD3F9EA61B754912009FD776 /* app-map-icon.png in Resources */,
 				AD0ED97D1B715136005BBC98 /* Images.xcassets in Resources */,
 				AD3F9E9C1B75307C009FD776 /* reveal-icon.png in Resources */,
@@ -457,7 +483,9 @@
 				ADD667211B7BE23100C7B48B /* MKMapItem+Category.m in Sources */,
 				AD3F9E981B752E47009FD776 /* SWRevealViewController.m in Sources */,
 				ADD14C7B1B7FEDC600D0C186 /* HoneyHoleNavigationController.m in Sources */,
+				ADD8DA861B829D2800B30F56 /* GearNavigationController.m in Sources */,
 				AD0ED9721B715136005BBC98 /* AppDelegate.m in Sources */,
+				ADD8DA831B82926000B30F56 /* GearViewController.m in Sources */,
 				AD0ED96F1B715136005BBC98 /* main.m in Sources */,
 				AD0ED9A41B72ABD5005BBC98 /* NavigationController.m in Sources */,
 			);

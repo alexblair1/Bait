@@ -24,7 +24,7 @@
     [Parse setApplicationId:@"5vylZ2mqPLiYkjlqULtgeapjL6uoVVIpg1XNirkj"
                   clientKey:@"YiD7g8yGAMnILehVdiPGXIK6eMmgncVWXnG0um9E"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-        
+    
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     NSLog(@"%d",  status);
     
@@ -34,12 +34,12 @@
     
     if ([[DataSource sharedInstance].locationManagerDS respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [[DataSource sharedInstance].locationManagerDS requestAlwaysAuthorization];
-        NSLog(@"request always alert");
+        [[DataSource sharedInstance].locationManagerDS startUpdatingLocation];
     }
     
     if ([[DataSource sharedInstance].locationManagerDS respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [[DataSource sharedInstance].locationManagerDS requestWhenInUseAuthorization];
-        NSLog(@"request when in use alert");
+        [[DataSource sharedInstance].locationManagerDS startUpdatingLocation];
     }
         
     return YES;
