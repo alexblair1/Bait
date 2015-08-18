@@ -142,11 +142,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRG-T1-AmG">
-                                <rect key="frame" x="0.0" y="4" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="305"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="74v-Fk-4ci"/>
                                 </constraints>
@@ -157,7 +157,7 @@
                                 </variation>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-w0-H7S">
-                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="276" width="414" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocalResultsCell" textLabel="704-Bi-ZFv" detailTextLabel="vOc-zN-seP" rowHeight="75" style="IBUITableViewCellStyleSubtitle" id="a4L-D5-Fcd">
@@ -187,11 +187,11 @@
                         <constraints>
                             <constraint firstItem="W8L-w0-H7S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1zI-oA-DdF"/>
                             <constraint firstAttribute="trailing" secondItem="KRG-T1-AmG" secondAttribute="trailing" id="7se-9I-pYc"/>
-                            <constraint firstItem="W8L-w0-H7S" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="300" id="Jbc-i7-eFY"/>
+                            <constraint firstItem="W8L-w0-H7S" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="276" id="Jbc-i7-eFY"/>
                             <constraint firstItem="KRG-T1-AmG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LbN-k6-cw6"/>
-                            <constraint firstItem="KRG-T1-AmG" firstAttribute="height" secondItem="W8L-w0-H7S" secondAttribute="height" id="Qpj-oC-vBy"/>
+                            <constraint firstItem="KRG-T1-AmG" firstAttribute="height" secondItem="W8L-w0-H7S" secondAttribute="height" constant="-155" id="Qpj-oC-vBy"/>
                             <constraint firstAttribute="bottom" secondItem="W8L-w0-H7S" secondAttribute="bottom" id="SbW-jQ-FRj"/>
-                            <constraint firstAttribute="bottom" secondItem="KRG-T1-AmG" secondAttribute="bottom" constant="296" id="oqC-uh-ddH"/>
+                            <constraint firstAttribute="bottom" secondItem="KRG-T1-AmG" secondAttribute="bottom" constant="367" id="oqC-uh-ddH"/>
                             <constraint firstAttribute="trailing" secondItem="W8L-w0-H7S" secondAttribute="trailing" id="svN-Wz-HiJ"/>
                         </constraints>
                     </view>
@@ -200,6 +200,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="mapView" destination="KRG-T1-AmG" id="eu6-XD-P4W"/>
                         <outlet property="revealButtonItem" destination="bqH-Y0-ErW" id="cdf-xI-fv6"/>
@@ -225,10 +226,10 @@
                     </view>
                     <connections>
                         <segue destination="0ud-a4-XZy" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="le8-t7-gDs"/>
-                        <segue destination="nIC-3D-Vpy" kind="custom" identifier="" customClass="SWRevealViewControllerSegueSetController" id="iFY-2o-rH8"/>
-                        <segue destination="MlL-BV-acB" kind="custom" identifier="" customClass="SWRevealViewControllerSegueSetController" id="eyj-7q-6QI"/>
+                        <segue destination="nIC-3D-Vpy" kind="custom" identifier="3" customClass="SWRevealViewControllerSegueSetController" id="iFY-2o-rH8"/>
+                        <segue destination="MlL-BV-acB" kind="custom" identifier="2" customClass="SWRevealViewControllerSegueSetController" id="eyj-7q-6QI"/>
                         <segue destination="Je8-vu-4Go" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="TFc-uK-DhK"/>
-                        <segue destination="uDA-wj-1iS" kind="custom" identifier="" customClass="SWRevealViewControllerSegueSetController" id="GjP-Ti-vUF"/>
+                        <segue destination="uDA-wj-1iS" kind="custom" identifier="1" customClass="SWRevealViewControllerSegueSetController" id="GjP-Ti-vUF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5J2-GG-kI9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -431,9 +432,9 @@
         <image name="visited.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YIq-Dg-oAq"/>
-        <segue reference="fqN-gY-3X4"/>
-        <segue reference="7hb-8D-1gA"/>
-        <segue reference="hB7-nD-ASw"/>
+        <segue reference="eyj-7q-6QI"/>
+        <segue reference="TFc-uK-DhK"/>
+        <segue reference="iFY-2o-rH8"/>
+        <segue reference="GjP-Ti-vUF"/>
     </inferredMetricsTieBreakers>
 </document>
