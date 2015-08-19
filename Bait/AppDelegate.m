@@ -16,7 +16,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
@@ -32,16 +31,13 @@
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     
-    if ([[DataSource sharedInstance].locationManagerDS respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        [[DataSource sharedInstance].locationManagerDS requestAlwaysAuthorization];
-        [[DataSource sharedInstance].locationManagerDS startUpdatingLocation];
-    }
-    
     if ([[DataSource sharedInstance].locationManagerDS respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [[DataSource sharedInstance].locationManagerDS requestWhenInUseAuthorization];
-        [[DataSource sharedInstance].locationManagerDS startUpdatingLocation];
-    }
         
+        [DataSource sharedInstance].locationManagerDS.desiredAccuracy = kCLLocationAccuracyBest;
+        [[DataSource sharedInstance].locationManagerDS setDistanceFilter:1000.0];
+        [[DataSource sharedInstance].locationManagerDS startMonitoringSignificantLocationChanges];
+    }
     return YES;
 }
 

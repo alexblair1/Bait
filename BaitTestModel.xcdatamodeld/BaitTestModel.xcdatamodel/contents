@@ -13,7 +13,7 @@
         <attribute name="yCoordinate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Region" positionX="-54" positionY="-9" width="128" height="120"/>
         <element name="HoneyHole" positionX="-54" positionY="27" width="128" height="90"/>
+        <element name="Region" positionX="-54" positionY="-9" width="128" height="120"/>
     </elements>
 </model>

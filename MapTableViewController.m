@@ -20,8 +20,6 @@
 @property (nonatomic) MKCoordinateRegion regionSearch;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) MKMapItem *itemForRouteAndAlertView;
-@property (nonatomic, strong) NSArray *mapItems;
-
 
 @end
 
@@ -36,6 +34,7 @@
     [self initializeRevealView];
 
 //    uncomment for parse error test
+    
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [NSException raise:NSGenericException format:@"Everything is ok. This is just a test crash."];
 //    });
@@ -59,22 +58,27 @@
 }
 
 -(void) initializeMapViewAndLocationManager{
-    self.locationManager = [[CLLocationManager alloc] init];
-    [self.locationManager setDelegate:self];
-    [self.locationManager startUpdatingLocation];
     
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [DataSource sharedInstance].locationManagerDS.delegate = self;
+    
+//    self.locationManager = [DataSource sharedInstance].locationManagerDS;
+//    [self.locationManager setDelegate:self];
+//    
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+//    [self.locationManager setDistanceFilter:1000.0f];
+//    
+//    [self.locationManager startMonitoringSignificantLocationChanges];
+
     
     self.mapView.delegate = self;
-    self.mapView.showsUserLocation = YES;
 
     [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     [self.mapView setZoomEnabled:YES];
     
     CLLocationCoordinate2D startCoord;
-    startCoord.latitude = self.locationManager.location.coordinate.latitude;
-    startCoord.longitude = self.locationManager.location.coordinate.longitude;
+    startCoord.latitude = [DataSource sharedInstance].locationManagerDS.location.coordinate.latitude;
+    startCoord.longitude = [DataSource sharedInstance].locationManagerDS.location.coordinate.longitude;
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(startCoord, 70000, 70000);
     
@@ -94,15 +98,16 @@
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways){
         
         if ([CLLocationManager locationServicesEnabled]) {
-            [self.locationManager startUpdatingLocation];
+            [[DataSource sharedInstance].locationManagerDS startUpdatingLocation];
             self.mapView.showsUserLocation = YES;
         }
     }
 }
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-//-(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
-//    [self.mapView removeAnnotations:self.mapView.annotations];
+
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    [[DataSource sharedInstance].locationManagerDS stopUpdatingLocation];
     
     NSString *searchString = NSLocalizedString(@"fishing", "local search text");
     
@@ -136,7 +141,10 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    [self.locationManager startUpdatingLocation];
+    [DataSource sharedInstance].locationManagerDS.desiredAccuracy = kCLLocationAccuracyBest;
+    [[DataSource sharedInstance].locationManagerDS setDistanceFilter:1000.0];
+    [[DataSource sharedInstance].locationManagerDS startMonitoringSignificantLocationChanges];
+ 
 }
 
 #pragma mark - Annotations

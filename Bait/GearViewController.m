@@ -10,7 +10,7 @@
 
 @interface GearViewController ()
 
-@property (nonatomic, strong) WKWebView *gearWebView;
+@property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @end
@@ -19,45 +19,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self initializeRevealView];
     [self initializeNavigationImage];
-//    [self loadWebView];
-    
-    self.gearWebView = [[WKWebView alloc] init];
-    self.gearWebView.navigationDelegate = self;
-    
-//    @"http://www.baitapp.squarespace.com"
-    NSString *urlString = @"http://www.baitapp.squarespace.com";
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self.gearWebView loadRequest:request];
-    
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-    [self.activityIndicator startAnimating];
-    
-    [self.view addSubview:self.gearWebView];
+    [self loadWebView];
 }
 
+#pragma mark - init methods
+
 -(void)loadWebView{
-    self.gearWebView = [[WKWebView alloc] init];
-    self.gearWebView.navigationDelegate = self;
+    self.webView = [[WKWebView alloc] init];
+    self.webView.navigationDelegate = self;
     
+    //    @"http://www.baitapp.squarespace.com"
     NSString *urlString = @"http://www.baitapp.squarespace.com";
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self.gearWebView loadRequest:request];
+    [self.webView loadRequest:request];
     
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
     [self.activityIndicator startAnimating];
     
-    [self.view addSubview:self.gearWebView];
+    [self.view addSubview:self.webView];
 }
 
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    self.gearWebView.frame = self.view.frame;
+    self.webView.frame = self.view.frame;
 }
 
 -(void) initializeRevealView{
@@ -77,14 +66,17 @@
 }
 
 #pragma mark - WKNavigation Delegate
+-(void)webView:(WKWebView *)webView didStartProvisionalNavigation: (WKNavigation *)navigation {
+    
+}
 
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     [self.activityIndicator stopAnimating];
 }
 
 -(void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    [self webView:webView didFailNavigation:navigation withError:error];
     [self.activityIndicator stopAnimating];
-    [self webView:self.gearWebView didFailNavigation:navigation withError:error];
 }
 
 -(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{

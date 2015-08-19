@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gre-a5-KfL">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Honey Hole Table View Controller-->
@@ -12,7 +13,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Give a name to your new found honey hole." id="Jde-9a-c6x">
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Name your honey hole, and we'll handle the rest." id="Jde-9a-c6x">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -146,18 +147,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRG-T1-AmG">
-                                <rect key="frame" x="0.0" y="64" width="414" height="305"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="236"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="74v-Fk-4ci"/>
+                                    <constraint firstAttribute="height" constant="236" id="fQo-gL-Hsj"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="74v-Fk-4ci"/>
-                                    </mask>
-                                </variation>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-w0-H7S">
-                                <rect key="frame" x="0.0" y="276" width="414" height="460"/>
+                                <rect key="frame" x="0.0" y="300" width="414" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocalResultsCell" textLabel="704-Bi-ZFv" detailTextLabel="vOc-zN-seP" rowHeight="75" style="IBUITableViewCellStyleSubtitle" id="a4L-D5-Fcd">
@@ -186,14 +182,34 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="W8L-w0-H7S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1zI-oA-DdF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KRG-T1-AmG" secondAttribute="bottom" constant="367" id="41G-Is-xJf"/>
+                            <constraint firstItem="KRG-T1-AmG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="5dS-9r-fbw"/>
+                            <constraint firstItem="W8L-w0-H7S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="7Xt-bC-r3N"/>
                             <constraint firstAttribute="trailing" secondItem="KRG-T1-AmG" secondAttribute="trailing" id="7se-9I-pYc"/>
-                            <constraint firstItem="W8L-w0-H7S" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="276" id="Jbc-i7-eFY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="W8L-w0-H7S" secondAttribute="bottom" id="8EV-eI-k03"/>
+                            <constraint firstItem="W8L-w0-H7S" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="300" id="Jbc-i7-eFY"/>
                             <constraint firstItem="KRG-T1-AmG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LbN-k6-cw6"/>
-                            <constraint firstItem="KRG-T1-AmG" firstAttribute="height" secondItem="W8L-w0-H7S" secondAttribute="height" constant="-155" id="Qpj-oC-vBy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KRG-T1-AmG" secondAttribute="trailing" constant="-16" id="NNH-Fd-Uud"/>
+                            <constraint firstItem="KRG-T1-AmG" firstAttribute="height" secondItem="W8L-w0-H7S" secondAttribute="height" constant="-131" id="Qpj-oC-vBy"/>
                             <constraint firstAttribute="bottom" secondItem="W8L-w0-H7S" secondAttribute="bottom" id="SbW-jQ-FRj"/>
+                            <constraint firstItem="KRG-T1-AmG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="XON-BT-QgJ"/>
+                            <constraint firstItem="KRG-T1-AmG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fiD-vB-epN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W8L-w0-H7S" secondAttribute="trailing" constant="-16" id="nFP-UJ-tEY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KRG-T1-AmG" secondAttribute="trailing" id="net-pF-TyH"/>
+                            <constraint firstItem="W8L-w0-H7S" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="236" id="ni9-Zd-7oa"/>
                             <constraint firstAttribute="bottom" secondItem="KRG-T1-AmG" secondAttribute="bottom" constant="367" id="oqC-uh-ddH"/>
                             <constraint firstAttribute="trailing" secondItem="W8L-w0-H7S" secondAttribute="trailing" id="svN-Wz-HiJ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5dS-9r-fbw"/>
+                                <exclude reference="NNH-Fd-Uud"/>
+                                <exclude reference="Qpj-oC-vBy"/>
+                                <exclude reference="oqC-uh-ddH"/>
+                                <exclude reference="Jbc-i7-eFY"/>
+                                <exclude reference="41G-Is-xJf"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6j7-9R-MwM">
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" style="done" id="bqH-Y0-ErW">
@@ -246,7 +262,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" textLabel="zrK-oR-4oa" style="IBUITableViewCellStyleDefault" id="ps4-4a-Mio">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" textLabel="zrK-oR-4oa" imageView="ccb-07-pEF" style="IBUITableViewCellStyleDefault" id="ps4-4a-Mio">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ps4-4a-Mio" id="ksw-f7-MSf">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -257,6 +273,9 @@
                                             <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="baitText" id="ccb-07-pEF">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -425,6 +444,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="baitText" width="40" height="22"/>
         <image name="gear.png" width="512" height="512"/>
         <image name="honeyComb.png" width="416" height="416"/>
         <image name="map.png" width="512" height="512"/>
@@ -432,9 +452,9 @@
         <image name="visited.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eyj-7q-6QI"/>
-        <segue reference="TFc-uK-DhK"/>
-        <segue reference="iFY-2o-rH8"/>
-        <segue reference="GjP-Ti-vUF"/>
+        <segue reference="7hb-8D-1gA"/>
+        <segue reference="hB7-nD-ASw"/>
+        <segue reference="fqN-gY-3X4"/>
+        <segue reference="YIq-Dg-oAq"/>
     </inferredMetricsTieBreakers>
 </document>

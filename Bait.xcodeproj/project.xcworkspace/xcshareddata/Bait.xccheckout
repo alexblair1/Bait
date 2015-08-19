@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>32A17453-53D2-45BD-BD5B-CB58CE5EC4AD</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Bait</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>0BFC98D16EC49E160A446BDFAF378EB433E57DEC</key>
@@ -16,7 +16,7 @@
 		<string>github.com:alexblair1/Bait.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Bait.xcodeproj/project.xcworkspace</string>
+	<string>Bait.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0BFC98D16EC49E160A446BDFAF378EB433E57DEC</key>
